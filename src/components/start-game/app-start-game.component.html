@@ -1,0 +1,45 @@
+<div class="start-game">
+  <div class="rules">
+    <h2>Rules</h2>
+    <p>Each player has two decks of cards: Hero deck and Spaceship deck</p>
+    <p>The rules are:</p>
+    <ul>
+      <li>Player 1 stars round and select deck to play</li>
+      <li>Player 1 select card from deck</li>
+      <li>Player 1 marks ready</li>
+      <li>Player 2 selects card</li>
+      <li>Player 2 marks ready</li>
+      <li>Player 1 and Player 2 reveal cards</li>
+      <li>Player 1 and Player 2 compare cards</li>
+      <li>Hero deck card comapre mass</li>
+      <li>Spaceship deck cards comapre crew</li>
+      <li>Player with higher mass or crew wins</li>
+      <li>Next round starts with draw missing card deck</li>
+      <li>Player 2 stars next round</li>
+      <li>Game is won by player who win more round</li>
+    </ul>
+  </div>
+
+  <div class="setup">
+    <h2>Setup</h2>
+    <p>Please select number of round:</p>
+    <div class="rounds">
+      <div
+        class="round"
+        *ngFor="let round of rounds"
+        (click)="setNumberOfRounds(round)">
+        {{ round.size ? round.size : '∞' }}
+      </div>
+    </div>
+
+    <div class="summary" *ngIf="numberOfRounds !== null">
+      <p>
+        You will play:
+        <span>{{ numberOfRounds > 0 ? numberOfRounds : 'all' }}</span>
+        rounds
+      </p>
+      <!-- TODO: replace with material -->
+      <div class="start-button" (click)="startGame()">Start Game</div>
+    </div>
+  </div>
+</div>

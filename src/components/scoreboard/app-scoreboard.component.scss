@@ -1,0 +1,70 @@
+.scoreboard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-size-20);
+
+  width: 100vw;
+
+  .imperial,
+  .rebellion,
+  .result {
+    padding: var(--spacing-16);
+  }
+
+  .imperial,
+  .rebellion {
+    width: 40%;
+  }
+
+  .imperial {
+    background-color: var(--color-white);
+    color: var(--color-black);
+  }
+
+  .rebellion {
+    background-color: var(--color-rebellion);
+    color: var(--color-rebellion-grey);
+    text-align: right;
+  }
+
+  .result {
+    width: 20%;
+    height: 100px;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    text-align: center;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    .summary {
+      font-size: var(--font-size-20);
+
+      .win,
+      .draw,
+      .lose {
+        font-family: 'Lato', sans-serif;
+        font-weight: 700;
+        padding: var(--spacing-16);
+        text-align: center;
+        color: var(--color-yellow);
+      }
+      .win {
+        color: var(--color-green);
+        font-size: var(--font-size-54);
+      }
+
+      .draw {
+        font-size: var(--font-size-42);
+      }
+
+      .lose {
+        color: var(--color-red);
+        font-size: var(--font-size-42);
+      }
+    }
+  }
+}

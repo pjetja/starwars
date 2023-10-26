@@ -1,0 +1,21 @@
+<div class="scoreboard">
+  <div class="imperial">Gallactic Empire</div>
+  <div class="result">
+    <div class="summary">
+      <span
+        [class.win]="isEmpireWinning"
+        [class.draw]="isDraw"
+        [class.lose]="isRebellionWinning">
+        {{ empireScore }}
+      </span>
+      vs
+      <span
+        [class.win]="isRebellionWinning"
+        [class.draw]="isDraw"
+        [class.lose]="isEmpireWinning">
+        {{ rebellionScore }}
+      </span>
+    </div>
+  </div>
+  <div class="rebellion">Rebellion</div>
+</div>

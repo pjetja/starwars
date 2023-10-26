@@ -1,0 +1,14 @@
+.page-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background: var(--color-black);
+
+  display: flex;
+  flex-direction: column;
+
+  .page-content {
+    flex-grow: 1;
+    background: var(--color-black);
+    padding-bottom: var(--spacing-32);
+  }
+}

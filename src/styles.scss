@@ -1,1 +1,221 @@
-/* You can add global styles to this file, and also import other style files */
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+:root {
+  // COLORS
+  --color-white: #fff;
+  --color-black: #000;
+  --color-grey: #64696c;
+  --color-blue: #394a59;
+  --color-red: #bc1e22;
+  --color-yellow: #ffe81f;
+  --color-green: #4d835c;
+  --color-rebellion: #dd4e1e;
+  --color-rebellion-grey: #3b444b // BORDERS
+    --border-radius-5: 5px;
+  --border-radius-10: 10px;
+  --border-radius-20: 20px;
+  --border-radius-30: 30px;
+
+  // TRANSITIONS
+  --transition-time-very-short: 150ms;
+  --transition-time-short: 200ms;
+  --transition-time-medium: 300ms;
+  --transition-time-long: 500ms;
+
+  --transition-very-short: var(--transition-time-very-short) ease-out;
+  --transition-short: var(--transition-time-short) ease-out;
+  --transition-medium: var(--transition-time-medium) ease-out;
+  --transition-long: var(--transition-time-long) ease-out;
+
+  // SHADOWS
+  --shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+
+  // FONTS
+  --font-family: 'Lato', sans-serif;
+  --font-size-10: 0.625rem;
+  --font-size-12: 0.75rem;
+  --font-size-14: 0.875rem;
+  --font-size-16: 1rem;
+  --font-size-20: 1.25rem;
+  --font-size-28: 1.75rem;
+  --font-size-32: 2rem;
+  --font-size-42: 2.625rem;
+  --font-size-54: 3.375rem;
+  --line-heights-12: 0.75rem;
+  --line-heights-14: 0.875rem;
+  --line-heights-16: 1rem;
+  --line-heights-18: 1.125rem;
+  --line-heights-20: 1.25rem;
+  --line-heights-24: 1.5rem;
+  --line-heights-32: 2rem;
+  --line-heights-36: 2.25rem;
+  --line-heights-52: 3.25rem;
+  --line-heights-64: 4rem;
+  --letter-spacing-s: -0.01rem;
+  --letter-spacing-l: -0.02rem;
+
+  --link-s: var(--font-size-12);
+  --link-l: var(--font-size-14);
+  --body-s: var(--font-size-12);
+  --body-m: var(--font-size-14);
+  --body-l: var(--font-size-16);
+  --label-s: var(--font-size-12);
+  --label-l: var(--font-size-14);
+  --label-xl: var(--font-size-16);
+  --label-xxl: var(--font-size-20);
+  --heading-6: var(--font-size-16);
+  --heading-5: var(--font-size-20);
+  --heading-4: var(--font-size-28);
+  --heading-3: var(--font-size-32);
+  --heading-2: var(--font-size-42);
+  --heading-1: var(--font-size-54);
+
+  --spacing-2: 0.125rem;
+  --spacing-4: 0.25rem;
+  --spacing-8: 0.5rem;
+  --spacing-12: 0.75rem;
+  --spacing-16: 1rem;
+  --spacing-24: 1.5rem;
+  --spacing-32: 2rem;
+  --spacing-40: 2.5rem;
+  --spacing-48: 3rem;
+  --spacing-64: 4rem;
+  --spacing-80: 5rem;
+  --spacing-96: 6rem;
+
+  font-family: var(--font-family);
+}
+
+* {
+  box-sizing: border-box;
+}

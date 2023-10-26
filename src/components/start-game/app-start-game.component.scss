@@ -1,0 +1,89 @@
+.start-game {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+  height: 100%;
+  width: 100%;
+  color: var(--color-white);
+  gap: 20%;
+
+  h2 {
+    padding: var(--spacing-16) 0;
+    font-size: var(--font-size-20);
+  }
+
+  p {
+    padding: var(--spacing-8) 0;
+    font-size: var(--font-size-14);
+  }
+
+  ul {
+    padding: 0 var(--spacing-8);
+  }
+
+  li {
+    padding: var(--spacing-4) 0;
+    font-size: var(--font-size-12);
+  }
+
+  .rules,
+  .setup {
+    width: 40%;
+    padding: 0 var(--spacing-32);
+  }
+
+  .setup {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    .rounds {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: var(--spacing-16) 0;
+      .round {
+        width: 20%;
+        padding: var(--spacing-16);
+        background: var(--color-yellow);
+        color: var(--color-black);
+        text-align: center;
+        border-radius: 10px;
+
+        cursor: pointer;
+        transition: var(--transition-short);
+        &:hover {
+          // Should be separate variable
+          background: darken(#ffe81f, 10%);
+        }
+      }
+    }
+
+    .summary {
+      p {
+        span {
+          color: var(--color-yellow);
+        }
+      }
+
+      .start-button {
+        width: 100%;
+        padding: var(--spacing-16) 0;
+        background: var(--color-green);
+        color: var(--color-black);
+        text-align: center;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: var(--transition-short);
+        &:hover {
+          // Should be separate variable
+          background: darken(#4d835c, 10%);
+        }
+      }
+    }
+  }
+}
