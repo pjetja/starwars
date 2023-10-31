@@ -1,0 +1,20 @@
+.card-deck {
+  display: flex;
+  flex-direction: column;
+
+  .card-deck__title {
+    font-size: var(--font-size-16);
+    padding-bottom: var(--spacing-16);
+  }
+
+  .card-deck__cards {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    > * {
+      display: flex;
+      flex: 1;
+    }
+  }
+}

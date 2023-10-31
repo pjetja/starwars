@@ -51,14 +51,19 @@ export interface SpaceshipsResponse {
   providedIn: 'root',
 })
 export class SpaceshipService {
-  private readonly baseUrl = 'https://swapi.dev/api/starships/';
+  private readonly baseUrl = 'https://swapi.tech/api/starships';
   constructor(private httpClient: HttpClient) {}
 
   public getSpaceship(id: number): Observable<SpaceshipResponse> {
-    return this.httpClient.get<SpaceshipResponse>(`${this.baseUrl}${id}`);
+    return this.httpClient.get<SpaceshipResponse>(`${this.baseUrl}/${id}`);
   }
 
   public getSpaceships(): Observable<SpaceshipsResponse> {
-    return this.httpClient.get<SpaceshipsResponse>(this.baseUrl);
+    return this.httpClient.get<SpaceshipsResponse>(this.baseUrl, {
+      params: {
+        limit: 36,
+        page: 0,
+      },
+    });
   }
 }

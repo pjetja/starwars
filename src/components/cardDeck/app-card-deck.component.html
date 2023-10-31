@@ -1,0 +1,11 @@
+<div class="card-deck">
+  <div class="card-deck__title">{{ deckType | uppercase }} DECK</div>
+  <div *ngIf="{ val: visibility$ | async } as visible" class="card-deck__cards">
+    <app-card-preview
+      *ngFor="let card of cards$ | async"
+      [card]="card"
+      [deckType]="deckType"
+      [isVisible]="visible.val"
+      [player]="player"></app-card-preview>
+  </div>
+</div>

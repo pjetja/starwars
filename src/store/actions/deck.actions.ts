@@ -30,21 +30,25 @@ export const setSpaceshipCard = createAction(
   props<{ spaceshipCard: SpaceshipCard }>()
 );
 
-export const playHeroCard = createAction(
-  `[${deckFeatureName}] Play Hero Card`,
-  props<{ player: 'empire' | 'rebellion'; card: HeroCard }>()
+export const showHeroCardDetails = createAction(
+  `[${deckFeatureName}] Show Hero Card Details`,
+  props<{ uid: number; player: 1 | 2 }>()
 );
-export const playSpaceshipCard = createAction(
-  `[${deckFeatureName}] Play Spaceship Card`,
-  props<{ player: 'empire' | 'rebellion'; card: SpaceshipCard }>()
+
+export const showSpaceshipCardDetails = createAction(
+  `[${deckFeatureName}] Show Spaceship Card Details`,
+  props<{ uid: number; player: 1 | 2 }>()
+);
+
+export const removeUsedCards = createAction(
+  `[${deckFeatureName}] Remove Used Cards`
 );
 
 export const fetchHeroesDeck = createAction(
   `[${deckFeatureName}] Fetch Hero Deck`
 );
 export const fetchHeroesDeckSuccess = createAction(
-  `[${deckFeatureName}] Fetch Hero Deck Success`,
-  props<{ heroesDeck: Card[] }>()
+  `[${deckFeatureName}] Fetch Hero Deck Success`
 );
 export const fetchHeroesDeckFailure = createAction(
   `[${deckFeatureName}] Fetch Hero Deck Failure`
@@ -54,8 +58,7 @@ export const fetchSpaceshipDeck = createAction(
   `[${deckFeatureName}] Fetch Spaceship Deck`
 );
 export const fetchSpaceshipDeckSuccess = createAction(
-  `[${deckFeatureName}] Fetch Spaceship Deck Success`,
-  props<{ spaceshipDeck: Card[] }>()
+  `[${deckFeatureName}] Fetch Spaceship Deck Success`
 );
 export const fetchSpaceshipDeckFailure = createAction(
   `[${deckFeatureName}] Fetch Spaceship Deck Failure`
@@ -63,11 +66,10 @@ export const fetchSpaceshipDeckFailure = createAction(
 
 export const fetchHeroesCard = createAction(
   `[${deckFeatureName}] Fetch Hero Card`,
-  props<{ uid: number }>()
+  props<{ uid: number; player: 1 | 2 }>()
 );
 export const fetchHeroesCardSuccess = createAction(
-  `[${deckFeatureName}] Fetch Hero Card Success`,
-  props<{ heroCard: HeroCard }>()
+  `[${deckFeatureName}] Fetch Hero Card Success`
 );
 export const fetchHeroesCardFailure = createAction(
   `[${deckFeatureName}] Fetch Hero Card Failure`
@@ -75,11 +77,10 @@ export const fetchHeroesCardFailure = createAction(
 
 export const fetchSpaceshipCard = createAction(
   `[${deckFeatureName}] Fetch Spaceship Card`,
-  props<{ uid: number }>()
+  props<{ uid: number; player: 1 | 2 }>()
 );
 export const fetchSpaceshipCardSuccess = createAction(
-  `[${deckFeatureName}] Fetch Spaceship Card Success`,
-  props<{ spaceshipCard: SpaceshipCard }>()
+  `[${deckFeatureName}] Fetch Spaceship Card Success`
 );
 export const fetchSpaceshipCardFailure = createAction(
   `[${deckFeatureName}] Fetch Spaceship Card Failure`

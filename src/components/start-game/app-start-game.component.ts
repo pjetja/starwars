@@ -24,12 +24,7 @@ export class AppStartGameComponent implements OnInit, OnDestroy {
 
   constructor(private gameStore: Store<GameState>) {}
 
-  public rounds: Round[] = [
-    { size: 1 },
-    { size: 5 },
-    { size: 10 },
-    { size: 0 },
-  ];
+  public rounds: Round[] = [{ size: 1 }, { size: 5 }, { size: 10 }];
 
   public ngOnInit(): void {
     this.numberOfRoundsSubscription = this.gameStore

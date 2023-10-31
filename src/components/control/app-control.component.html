@@ -1,0 +1,67 @@
+<div class="control" *ngIf="winner$ | async as winner; else gameTemplate">
+  <div *ngIf="winner === 1" class="winner">Empire won!</div>
+  <div *ngIf="winner === 2" class="winner">Rebellion won!</div>
+  <div *ngIf="winner === 3" class="winner">Draw!</div>
+
+  <div class="next-game">
+    <button (click)="nextGame()">Next Game</button>
+  </div>
+</div>
+
+<ng-template #gameTemplate>
+  <div class="control-deck-type">
+    <div
+      class="current-deck"
+      *ngIf="selectedDeck$ | async as selectedDeck; else selectDeckTemplate">
+      Current round deck:
+      <span>
+        {{ selectedDeck === 1 ? 'Heroes' : 'Spaceships' }}
+      </span>
+    </div>
+
+    <ng-template #selectDeckTemplate>
+      <p>Select Deck:</p>
+      <div class="buttons">
+        <button (click)="selectDeck(1)">Heroes</button>
+        <button (click)="selectDeck(2)">Spaceships</button>
+      </div>
+    </ng-template>
+  </div>
+
+  <ng-container *ngIf="selectedDeck$ | async as selectedDeck">
+    <div class="control-player" *ngIf="startPlayer$ | async as firstPlayer">
+      <div class="player firstPlayer">
+        <div class="name">{{ humanizePlayer(firstPlayer) }}</div>
+        <div class="select-card">
+          <button
+            *ngIf="!firstPlayerPlayed; else fpPlayed"
+            (click)="selectCard(firstPlayer)">
+            Select Card
+          </button>
+          <ng-template #fpPlayed>Card Selected!</ng-template>
+        </div>
+      </div>
+      <div class="player secondPlayer" *ngIf="firstPlayerPlayed">
+        <div class="name">{{ humanizePlayer(opositePlayer(firstPlayer)) }}</div>
+
+        <button
+          *ngIf="!secondPlayerPlayed; else spPlayed"
+          (click)="selectCard(opositePlayer(firstPlayer))">
+          Select Card
+        </button>
+        <ng-template #spPlayed>Card Selected!</ng-template>
+      </div>
+    </div>
+
+    <div
+      class="control-round-result"
+      *ngIf="firstPlayerPlayed && secondPlayerPlayed">
+      <button (click)="fight(selectedDeck)">Fight!</button>
+
+      <!-- <ng-container></ng-container> -->
+    </div>
+
+    <!-- round log? -->
+    <!-- <div class="control-next-round"></div> -->
+  </ng-container>
+</ng-template>

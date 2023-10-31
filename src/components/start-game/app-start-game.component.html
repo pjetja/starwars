@@ -11,11 +11,10 @@
       <li>Player 2 marks ready</li>
       <li>Player 1 and Player 2 reveal cards</li>
       <li>Player 1 and Player 2 compare cards</li>
-      <li>Hero deck card comapre mass</li>
+      <li>Hero deck card comapre height</li>
       <li>Spaceship deck cards comapre crew</li>
-      <li>Player with higher mass or crew wins</li>
+      <li>Player with higher height or crew wins</li>
       <li>Next round starts with draw missing card deck</li>
-      <li>Player 2 stars next round</li>
       <li>Game is won by player who win more round</li>
     </ul>
   </div>
@@ -35,7 +34,7 @@
     <div class="summary" *ngIf="numberOfRounds !== null">
       <p>
         You will play:
-        <span>{{ numberOfRounds > 0 ? numberOfRounds : 'all' }}</span>
+        <span>{{ numberOfRounds }}</span>
         rounds
       </p>
       <!-- TODO: replace with material -->

@@ -1,0 +1,4 @@
+<div class="card-preview" (click)="showCardDetails()">
+  <div *ngIf="isVisible" class="card-preview__id">{{ card.uid }}</div>
+  <div *ngIf="isVisible" class="card-preview__name">{{ card.name }}</div>
+</div>

@@ -2,4 +2,22 @@
   background-color: var(--color-grey);
   width: 40vw;
   padding: var(--spacing-24);
+
+  .player {
+    font-size: var(--font-size-20);
+    padding-bottom: var(--spacing-16);
+    border-bottom: 2px dashed var(--color-white);
+  }
+
+  .deck {
+    padding-top: var(--spacing-16);
+    padding-bottom: var(--spacing-16);
+    border-bottom: 2px dashed var(--color-white);
+  }
+
+  .selectedCard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

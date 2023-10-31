@@ -1,6 +1,12 @@
 <div class="playerboard">
-  <div class="player">Player {{ player }}</div>
-  <div class="herosDeck">heros Deck</div>
-  <div class="spaceshipsDeck">Ships</div>
-  <div class="selectedCard">Card</div>
+  <div class="player">Player {{ playerName }}</div>
+  <div class="herosDeck deck">
+    <app-card-deck [player]="player" [deckType]="'heroes'"></app-card-deck>
+  </div>
+  <div class="spaceshipsDeck deck">
+    <app-card-deck [player]="player" [deckType]="'spaceships'"></app-card-deck>
+  </div>
+  <div class="selectedCard">
+    <app-card-details [player]="player"></app-card-details>
+  </div>
 </div>

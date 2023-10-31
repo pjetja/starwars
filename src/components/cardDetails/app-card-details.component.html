@@ -1,0 +1,26 @@
+<div class="card-details" *ngIf="card">
+  <ng-container *ngIf="isVisible$ | async">
+    <div class="card-details__id">{{ card.uid }}</div>
+    <div class="card-details__name">{{ card.name }}</div>
+    <div class="card-details__props">
+      <ul>
+        <li *ngFor="let item of props()">
+          <span>{{ getHumanizedKey(item) }}:</span>
+          <span>
+            {{ getProperty(item) }}
+          </span>
+        </li>
+      </ul>
+    </div>
+  </ng-container>
+</div>
+
+<div class="card-actions" *ngIf="card && !isCardPlayed">
+  <button
+    *ngIf="canPlayCard()"
+    class="card-actions__button"
+    (click)="playCard()">
+    Play Card
+  </button>
+  <div *ngIf="!canPlayCard()">Select card from another deck</div>
+</div>

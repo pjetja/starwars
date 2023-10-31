@@ -1,16 +1,1 @@
-<div class="page-wrapper">
-  <app-header></app-header>
-
-  <div class="page-content">
-    <div class="start-game">
-      <app-gameboard
-        *ngIf="currentRoundNumber$ | async; else setup"></app-gameboard>
-
-      <ng-template #setup>
-        <app-start-game></app-start-game>
-      </ng-template>
-    </div>
-  </div>
-
-  <app-footer></app-footer>
-</div>
+<router-outlet></router-outlet>

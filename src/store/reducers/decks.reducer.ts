@@ -47,11 +47,13 @@ export interface DeckState {
   empireDeck: {
     spaceships: Card[];
     heroes: Card[];
+    selectedCard?: HeroCard | SpaceshipCard;
   };
 
   rebellionDeck: {
     spaceships: Card[];
     heroes: Card[];
+    selectedCard?: HeroCard | SpaceshipCard;
   };
 }
 
@@ -81,8 +83,9 @@ export function deckReducer(state: DeckState, action: Action) {
     on(actions.setSpaceshipDeck, onSetSpaceshipDeck),
     on(actions.setHeroCard, onSetHeroCard),
     on(actions.setSpaceshipCard, onSetSpaceshipCard),
-    on(actions.playHeroCard, onPlayHeroCard),
-    on(actions.playSpaceshipCard, onPlaySpaceshipCard)
+    on(actions.showHeroCardDetails, onShowHeroCardDetails),
+    on(actions.showSpaceshipCardDetails, onShowSpaceshipCardDetails),
+    on(actions.removeUsedCards, onRemoveUsedCards)
   )(state, action);
 }
 
@@ -116,7 +119,7 @@ function onDrawHeroCard(
         .concat(state.heroesDeck.slice(randomIndex + 1)),
       rebellionDeck: {
         ...state.rebellionDeck,
-        heroes: state.empireDeck.heroes.concat(randomHero),
+        heroes: state.rebellionDeck.heroes.concat(randomHero),
       },
     };
   }
@@ -154,7 +157,7 @@ function onDrawSpaceshipCard(
         .concat(state.spaceshipsDeck.slice(randomIndex + 1)),
       rebellionDeck: {
         ...state.rebellionDeck,
-        spaceships: state.empireDeck.spaceships.concat(randomSpaceship),
+        spaceships: state.rebellionDeck.spaceships.concat(randomSpaceship),
       },
     };
   }
@@ -202,27 +205,56 @@ function onSetSpaceshipCard(
   };
 }
 
-function onPlayHeroCard(
+function onShowHeroCardDetails(
   state: DeckState,
-  { player, card }: { player: 'empire' | 'rebellion'; card: HeroCard }
+  { player, uid }: { player: 1 | 2; uid: number }
 ): DeckState {
-  if (player === 'empire') {
+  if (player === 1) {
     return {
       ...state,
       empireDeck: {
         ...state.empireDeck,
-        heroes: state.empireDeck.heroes.filter((hero) => hero.uid !== card.uid),
+        selectedCard: state.heroesCards.find((hero) => hero.uid === uid),
       },
     };
   }
 
-  if (player === 'rebellion') {
+  if (player === 2) {
     return {
       ...state,
       rebellionDeck: {
         ...state.rebellionDeck,
-        heroes: state.rebellionDeck.heroes.filter(
-          (hero) => hero.uid !== card.uid
+        selectedCard: state.heroesCards.find((hero) => hero.uid === uid),
+      },
+    };
+  }
+
+  return state;
+}
+
+function onShowSpaceshipCardDetails(
+  state: DeckState,
+  { player, uid }: { player: 1 | 2; uid: number }
+): DeckState {
+  if (player === 1) {
+    return {
+      ...state,
+      empireDeck: {
+        ...state.empireDeck,
+        selectedCard: state.spaceshipsCards.find(
+          (spaceship) => spaceship.uid === uid
+        ),
+      },
+    };
+  }
+
+  if (player === 2) {
+    return {
+      ...state,
+      rebellionDeck: {
+        ...state.rebellionDeck,
+        selectedCard: state.spaceshipsCards.find(
+          (spaceship) => spaceship.uid === uid
         ),
       },
     };
@@ -231,33 +263,47 @@ function onPlayHeroCard(
   return state;
 }
 
-function onPlaySpaceshipCard(
-  state: DeckState,
-  { player, card }: { player: 'empire' | 'rebellion'; card: SpaceshipCard }
-): DeckState {
-  if (player === 'empire') {
+function onRemoveUsedCards(state: DeckState): DeckState {
+  const selectedCardDeck =
+    (<HeroCard>state.empireDeck.selectedCard).height !== undefined ? 1 : 2;
+  const selectedEmpireCard = state.empireDeck.selectedCard;
+  const selectedRebellionCard = state.rebellionDeck.selectedCard;
+
+  if (selectedCardDeck === 1) {
+    return {
+      ...state,
+      empireDeck: {
+        ...state.empireDeck,
+        heroes: state.empireDeck.heroes.filter(
+          (hero) => hero.uid !== selectedEmpireCard?.uid
+        ),
+        selectedCard: undefined,
+      },
+      rebellionDeck: {
+        ...state.rebellionDeck,
+        heroes: state.rebellionDeck.heroes.filter(
+          (hero) => hero.uid !== selectedRebellionCard?.uid
+        ),
+        selectedCard: undefined,
+      },
+    };
+  } else {
     return {
       ...state,
       empireDeck: {
         ...state.empireDeck,
         spaceships: state.empireDeck.spaceships.filter(
-          (spaceship) => spaceship.uid !== card.uid
+          (spaceship) => spaceship.uid !== selectedEmpireCard?.uid
         ),
+        selectedCard: undefined,
       },
-    };
-  }
-
-  if (player === 'rebellion') {
-    return {
-      ...state,
       rebellionDeck: {
         ...state.rebellionDeck,
         spaceships: state.rebellionDeck.spaceships.filter(
-          (spaceship) => spaceship.uid !== card.uid
+          (spaceship) => spaceship.uid !== selectedRebellionCard?.uid
         ),
+        selectedCard: undefined,
       },
     };
   }
-
-  return state;
 }

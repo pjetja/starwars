@@ -46,14 +46,19 @@ export interface HeroesResponse {
   providedIn: 'root',
 })
 export class HeroesService {
-  private readonly baseUrl = 'https://swapi.dev/api/people/';
+  private readonly baseUrl = 'https://swapi.tech/api/people';
   constructor(private httpClient: HttpClient) {}
 
   public getHero(id: number): Observable<HeroResponse> {
-    return this.httpClient.get<HeroResponse>(`${this.baseUrl}${id}`);
+    return this.httpClient.get<HeroResponse>(`${this.baseUrl}/${id}`);
   }
 
   public getHeroes(): Observable<HeroesResponse> {
-    return this.httpClient.get<HeroesResponse>(this.baseUrl);
+    return this.httpClient.get<HeroesResponse>(this.baseUrl, {
+      params: {
+        limit: 82,
+        page: 0,
+      },
+    });
   }
 }
