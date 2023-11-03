@@ -40,6 +40,7 @@ export const spaceshipDeckSelector = createSelector(
 
 export const heroesDeckSelector = (player: number) =>
   createSelector(DeckFeatureSelector, (state: DeckState): Card[] => {
+    console.log(player);
     return player === 1 ? state.empireDeck.heroes : state.rebellionDeck.heroes;
   });
 

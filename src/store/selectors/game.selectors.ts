@@ -45,6 +45,7 @@ export const playerSelectedCardSelector = (player: 1 | 2) =>
 
 export const isVisibleForPlayerSelector = (player: 1 | 2) =>
   createSelector(GameFeatureSelector, (state: GameState): boolean => {
+    console.log(state);
     return state?.currentView === player;
   });
 

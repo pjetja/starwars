@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import {
   Card,
   DeckState,
+  GameState,
   heroesDeckSelector,
   isVisibleForPlayerSelector,
   spaceshipsDeckSelector,
@@ -27,9 +28,10 @@ export class AppCardDeckComponent implements OnInit {
   public cards$: Observable<Card[]>;
   public visibility$: Observable<boolean>;
 
-  constructor(private store: Store<DeckState>) {}
+  constructor(private store: Store<DeckState | GameState>) {}
 
   public ngOnInit(): void {
+    console.log(this.store);
     this.cards$ =
       this.deckType === 'heroes'
         ? this.store.select(heroesDeckSelector(this.player))

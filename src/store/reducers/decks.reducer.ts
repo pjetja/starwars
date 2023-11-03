@@ -26,11 +26,11 @@ export interface SpaceshipCard {
   length: number;
   crew: number;
   passengers: number;
-  max_atmosphering_speed: number;
+  max_atmosphering_speed: number | string;
   hyperdrive_rating: number;
   MGLT: number;
   cargo_capacity: number;
-  consumables: number;
+  consumables: number | string;
   name: string;
   uid: number;
 }

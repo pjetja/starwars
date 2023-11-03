@@ -13,13 +13,13 @@ export interface SpaceshipResponse {
       length: number;
       crew: number;
       passengers: number;
-      max_atmosphering_speed: number;
+      max_atmosphering_speed: number | string;
       hyperdrive_rating: number;
       MGLT: number;
       cargo_capacity: number;
-      consumables: number;
+      consumables: string;
       name: string;
-
+      pilots?: string[];
       created: Date;
       edited: Date;
 
