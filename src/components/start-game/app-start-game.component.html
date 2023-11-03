@@ -26,6 +26,7 @@
       <div
         class="round"
         *ngFor="let round of rounds"
+        [attr.data-cy]="'RoundSize' + round.size"
         (click)="setNumberOfRounds(round)">
         {{ round.size ? round.size : '∞' }}
       </div>
@@ -38,7 +39,12 @@
         rounds
       </p>
       <!-- TODO: replace with material -->
-      <div class="start-button" (click)="startGame()">Start Game</div>
+      <div
+        class="start-button"
+        [attr.data-cy]="'StartGame'"
+        (click)="startGame()">
+        Start Game
+      </div>
     </div>
   </div>
 </div>

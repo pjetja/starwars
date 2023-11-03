@@ -22,7 +22,7 @@
     <ng-template #selectDeckTemplate>
       <p>Select Deck:</p>
       <div class="buttons">
-        <button (click)="selectDeck(1)">Heroes</button>
+        <button (click)="selectDeck(1)" data-cy="SelectDeck">Heroes</button>
         <button (click)="selectDeck(2)">Spaceships</button>
       </div>
     </ng-template>
@@ -34,6 +34,7 @@
         <div class="name">{{ humanizePlayer(firstPlayer) }}</div>
         <div class="select-card">
           <button
+            :data-cy="1PCardSelect"
             *ngIf="!firstPlayerPlayed; else fpPlayed"
             (click)="selectCard(firstPlayer)">
             Select Card
@@ -45,6 +46,7 @@
         <div class="name">{{ humanizePlayer(opositePlayer(firstPlayer)) }}</div>
 
         <button
+          :data-cy="2PCardSelect"
           *ngIf="!secondPlayerPlayed; else spPlayed"
           (click)="selectCard(opositePlayer(firstPlayer))">
           Select Card

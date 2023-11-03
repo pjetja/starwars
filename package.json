@@ -8,7 +8,10 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test --watch",
     "lint": "ng lint",
-    "lint:fix": "ng lint --fix"
+    "lint:fix": "ng lint --fix",
+    "e2e": "ng e2e",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "private": true,
   "dependencies": {
@@ -39,6 +42,7 @@
     "@angular-eslint/template-parser": "16.2.0",
     "@angular/cli": "^16.2.7",
     "@angular/compiler-cli": "^16.2.0",
+    "@cypress/schematic": "^2.5.1",
     "@types/jasmine": "~4.3.0",
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
